@@ -48,7 +48,7 @@
             },
 
             // Next URL
-            next() {
+            load_more() {
                 this.fetch_data(this.next_url);
             },
 
@@ -61,6 +61,7 @@
                     });
                 }, {
                     threshold: 0.5,
+                    rootMargin: '50px'
                 });
 
                 const last_child_observer = new IntersectionObserver((entries) => {
@@ -75,7 +76,7 @@
                     }
 
                     // Fetch more data when user scroll
-                    this.next();
+                    this.load_more();
 
                     last_child_observer.unobserve(last_child.target);
                 }, {
@@ -100,11 +101,6 @@
 
                     // Change Name
                     switch (value.toLowerCase()) {
-                        case 'zamazenta':
-                        case 'zacian':
-                            value = value.toLowerCase() + '-hero';
-                            break;
-
                         case 'tapu koko':
                         case 'tapu lele':
                         case 'tapu bulu':
@@ -228,6 +224,6 @@
 
 <style lang="scss" scoped>
     .list {
-        margin-top: 5rem;
+        margin-top: 7rem;
     }
 </style>

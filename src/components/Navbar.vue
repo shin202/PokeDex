@@ -36,11 +36,13 @@
         min-height: 7rem;
         text-align: center;
         padding: 1rem;
-        min-width: 20rem;
-        max-width: 100%;
+        width: 100%;
         box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1),
                     -1rem -1rem 2rem rgba(0, 0, 0, 0.1);
         text-transform: capitalize;
+        position: fixed;
+        top: 0;
+        z-index: 999999;
 
         .container-md {
             display: flex;

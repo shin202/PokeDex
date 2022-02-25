@@ -9,12 +9,12 @@
             >
                 <div class="pokemon-evolution__chain-details" v-if="value">
                     <div class="id">
-                        {{ pretty_id(value.id) }}
+                        {{ `#${pretty_id(value.id)}` }}
                     </div>
 
                     <div class="image">
                         <router-link :to="`/pokemon-detail/${value.id}`">
-                            <img :src="`${image_url}${value.species_name}.png`" :alt="value.species_name">
+                            <img :src="`${image_url}${pretty_id(value.id)}.png`" :alt="value.species_name">
                         </router-link>
                     </div>
 
@@ -99,158 +99,6 @@
                 const number_of_evolution = arr[0]['evolves_to'].length;
                 let species_name = arr[0].species.name;
 
-                // Fix URL
-                switch (species_name) {
-                    case 'burmy':
-                    case 'wormadam':
-                    case 'mothim':
-                        species_name = species_name + '-plant';
-                        break;
-                    
-                    case 'urshifu':
-                        species_name = species_name + '-single-strike';
-                        break;
-
-                    case 'lycanroc':
-                        species_name = species_name + '-midday';
-                        break;
-
-                    case 'toxtricity':
-                        species_name = species_name + '-amped';
-                        break;
-
-                    case 'arceus':
-                    case 'deoxys':
-                    case 'silvally':
-                        species_name = species_name + '-normal';
-                        break;
-
-                    case 'zacian':
-                    case 'zamazenta':
-                        species_name = species_name + '-hero';
-                        break;
-                    
-                    case 'morpeko':
-                        species_name = species_name + '-full-belly';
-                        break;
-
-                    case 'indeedee':
-                        species_name = species_name + '-male';
-                        break;
-
-                    case 'eiscue':
-                        species_name = species_name + '-ice';
-                        break;
-
-                    case 'polteageist':
-                    case 'sinistea':
-                        species_name = species_name + '-phony';
-                        break;
-    
-                    case 'mimikyu':
-                        species_name = species_name + '-disguised';
-                        break;
-
-                    case 'shaymin':
-                        species_name = species_name + '-land';
-                        break;
-
-                    case 'giratina':
-                        species_name = species_name + '-altered';
-                        break;
-
-                    case 'tornadus':
-                    case 'landorus':
-                    case 'thundurus':
-                        species_name = species_name + '-incarnate';
-                        break;
-
-                    case 'aegislash':
-                        species_name = species_name + '-shield';
-                        break;
-
-                    case 'basculin':
-                        species_name = species_name + '-red-striped';
-                        break;
-
-                    case 'cherrim':
-                        species_name = species_name + '-overcast';
-                        break;
-
-                    case 'darmanitan':
-                        species_name = species_name + '-standard';
-                        break;
-
-                    case 'deerling':
-                    case 'sawsbuck':
-                        species_name = species_name + '-spring';
-                        break;
-
-                    case 'scatterbug':
-                    case 'spewpa':
-                        species_name = species_name + '-icy-snow';
-                        break;
-
-                    case 'vivillon':
-                        species_name = species_name + '-meadow';
-                        break;
-
-                    case 'flabebe':
-                    case 'floette':
-                    case 'florges':
-                        species_name = species_name + '-red';
-                        break;
-
-                    case 'furfrou':
-                        species_name = species_name + '-natural';
-                        break;
-
-                    case 'gastrodon':
-                    case 'shellos':
-                        species_name = species_name + '-west';
-                        break;
-
-                    case 'gourgeist':
-                    case 'pumpkaboo':
-                        species_name = species_name + '-average';
-                        break;
-
-                    case 'keldeo':
-                        species_name = species_name + '-ordinary';
-                        break;
-
-                    case 'meloetta':
-                        species_name = species_name + '-aria';
-                        break;
-
-                    case 'meowstic':
-                        species_name = species_name + '-male';
-                        break;
-
-                    case 'minior':
-                        species_name = species_name + '-red-meteor';
-                        break;
-
-                    case 'oricorio':
-                        species_name = species_name + '-baile';
-                        break;
-
-                    case 'unown':
-                        species_name = species_name + '-a';
-                        break;
-
-                    case 'wishiwashi':
-                        species_name = species_name + '-solo'
-                        break;
-
-                    case 'xerneas':
-                        species_name = species_name + '-active'
-                        break;
-
-                    default:
-                        break;
-                }
-
                 // Chain Data
                 this.evolution_chain.push({
                     'id': this.get_id(arr),
@@ -296,11 +144,9 @@
             pretty_id(id) {
                 id = id.toString();
 
-                id = id.padStart(3, '0');
+                id = id.padStart(3, 0);
 
-                id = '#' + id;
-
-                return id
+                return id;
             },
 
             // Condition

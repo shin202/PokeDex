@@ -20,7 +20,7 @@
                         <li class="info-list__item">
                             <span>ID</span>
                             <div class="id">
-                                <span>{{ pretty_id(pokemon_detail.id) }}</span>
+                                <span>{{ `#${pretty_id(pokemon_detail.id)}` }}</span>
                             </div>
                         </li>
 
@@ -83,73 +83,12 @@
 
                     </ul>
                 </div>
-
-                <!-- Fix URL -->
-                <div class="image" v-if="$route.params.id === '201'">
-                    <img class="pokemon-image" :src="`${image_url}unown-a.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '412'">
-                    <img class="pokemon-image" :src="`${image_url}burmy-plant.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '414'">
-                    <img class="pokemon-image" :src="`${image_url}mothim-plant.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '421'">
-                    <img class="pokemon-image" :src="`${image_url}cherrim-overcast.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '422'">
-                    <img class="pokemon-image" :src="`${image_url}shellos-west.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '423'">
-                    <img class="pokemon-image" :src="`${image_url}gastrodon-west.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '493'">
-                    <img class="pokemon-image" :src="`${image_url}arceus-normal.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '585'">
-                    <img class="pokemon-image" :src="`${image_url}deerling-spring.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '586'">
-                    <img class="pokemon-image" :src="`${image_url}sawsbuck-spring.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '664'">
-                    <img class="pokemon-image" :src="`${image_url}scatterbug-icy-snow.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '665'">
-                    <img class="pokemon-image" :src="`${image_url}spewpa-icy-snow.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '666'">
-                    <img class="pokemon-image" :src="`${image_url}vivillon-meadow.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '669'">
-                    <img class="pokemon-image" :src="`${image_url}flabebe-red.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '670'">
-                    <img class="pokemon-image" :src="`${image_url}floette-red.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '671'">
-                    <img class="pokemon-image" :src="`${image_url}florges-red.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '676'">
-                    <img class="pokemon-image" :src="`${image_url}furfrou-natural.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '716'">
-                    <img class="pokemon-image" :src="`${image_url}xerneas-active.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '773'">
-                    <img class="pokemon-image" :src="`${image_url}silvally-normal.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '877'">
-                    <img class="pokemon-image" :src="`${image_url}morpeko-full-belly.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '855'">
-                    <img class="pokemon-image" :src="`${image_url}polteageist-phony.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else-if="$route.params.id === '854'">
-                    <img class="pokemon-image" :src="`${image_url}sinistea-phony.png`" :alt="pokemon_detail.name">
-                </div>
-                <div class="image" v-else>
-                    <img class="pokemon-image" :src="`${image_url}${pokemon_detail.name}.png`" :alt="pokemon_detail.name">
+                <div class="image">
+                    <span v-for="i in 100" :key="i" :class="`image__grid-cell--${i}`"></span>
+                    <img class="pokemon-image" 
+                        :src="`${image_url}${pretty_id($route.params.id)}.png`" 
+                        :alt="pokemon_detail.name"
+                    >
                 </div>
 
                 <div class="stats">
@@ -213,6 +152,8 @@
                 icon_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/assets/icons/',
 
                 is_loading: true,
+                mousemove_top: null,
+                mousemove_left: null,
             }
         },
         components: {
@@ -253,11 +194,9 @@
             pretty_id(id) {
                 id = String(id);
 
-                id = id.padStart(3, '0');
+                id = id.padStart(3, 0);
 
-                id = '#' + id;
-
-                return id
+                return id;
             },
 
             // Stats Progress Bar
@@ -350,7 +289,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 5rem;
+        margin-top: 7rem;
         font-size: 1.6rem;
 
         &__heading {
@@ -481,12 +420,29 @@
             .image {
                 position: relative;
                 min-height: 43rem;
+                transform-style: preserve-3d;
+                perspective: 100rem;
+                display: grid;
+                grid-template-columns: repeat(10, minmax(0, 1fr));
+                grid-template-rows: repeat(10, minmax(0, 1fr));
+                cursor: pointer;
+
+                & > span {
+                    z-index: 1;
+                }
+
+                @for $i from 1 to 100 {
+                    &__grid-cell--#{($i)}:hover ~ img {
+                        transform: rotateX(25deg + ($i % 10 * -5)) rotateY(-25deg + ($i % 10 * 5));
+                    }
+                }
 
                 img {
                     position: absolute;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }
             }
 

@@ -122,7 +122,7 @@
                 return new Promise((resolve, reject) => {
                     this.$bus.on('training_details', value => {
                         if(value) {
-                            setTimeout(() => resolve(Object.assign(this.training, value)), 1000);
+                            setTimeout(() => resolve({...this.training, ...value}), 1000);
                         }
                         else {
                             reject(undefined);

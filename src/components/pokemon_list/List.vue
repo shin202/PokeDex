@@ -4,95 +4,14 @@
             :key="index"
         >
             <span class="pokemon-id">
-                {{ pretty_id(get_id(index, value)) }}
+                {{ `#${pretty_id(get_id(index, value))}` }}
             </span>
             <div class="pokemon-image__container">
                 <div class="pokeball"></div>
                 <router-link :to="`/pokemon-detail/${get_id(index, value)}`">
-
-                    <!-- Fix URL -->
                     <img 
-                        v-if="value.name === 'arceus' || value.name === 'silvally'"
                         class="pokemon-image" 
-                        :src="`${url}${value.name}-normal.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'burmy' || value.name === 'mothim'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-plant.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'cherrim'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-overcast.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'deerling' || value.name === 'sawsbuck'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-spring.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'scatterbug' || value.name === 'spewpa'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-icy-snow.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'vivillon'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-meadow.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'flabebe' || value.name === 'floette' || value.name === 'florges'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-red.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'furfrou'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-natural.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'gastrodon' || value.name === 'shellos'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-west.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'morpeko'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-full-belly.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'polteageist' || value.name === 'sinistea'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-phony.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'unown'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-a.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else-if="value.name === 'xerneas'"
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}-active.png`" 
-                        :alt="value.name"
-                    >
-                    <img 
-                        v-else
-                        class="pokemon-image" 
-                        :src="`${url}${value.name}.png`" 
+                        :src="`${url}${pretty_id(get_id(index, value))}.png`" 
                         :alt="value.name"
                     >
                 </router-link>
@@ -134,11 +53,9 @@
             pretty_id(id) {
                 id = id.toString();
 
-                id = id.padStart(3, '0');
+                id = id.padStart(3, 0);
 
-                id = '#' + id;
-
-                return id
+                return id;
             },
 
             // When user search for any pokemon, id will change, 
@@ -181,8 +98,8 @@
                         inset 0.5rem 0.5rem 1rem rgba(64, 116, 238, 0.1);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.5s cubic-bezier(.6,.11,.73,.78);
-            transform: scale(0);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale3d(0, 0, 0);
 
             // PokéBall
             .pokemon-image__container {
@@ -282,7 +199,7 @@
         &-item.show {
             opacity: 1;
             visibility: visible;
-            transform: scale(1);
+            transform: scale3d(1, 1, 1);
         }
     }
 </style>
