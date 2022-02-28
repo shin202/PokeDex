@@ -224,6 +224,6 @@
 
 <style lang="scss" scoped>
     .list {
-        margin-top: 7rem;
+        margin-top: 5rem;
     }
 </style>

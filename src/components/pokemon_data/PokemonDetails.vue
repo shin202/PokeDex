@@ -289,7 +289,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 7rem;
+        margin-top: 5rem;
         font-size: 1.6rem;
 
         &__heading {

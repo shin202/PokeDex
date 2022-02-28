@@ -40,9 +40,10 @@
         box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1),
                     -1rem -1rem 2rem rgba(0, 0, 0, 0.1);
         text-transform: capitalize;
-        position: fixed;
+        position: sticky;
         top: 0;
-        z-index: 999999;
+        z-index: 999999999;
+
 
         .container-md {
             display: flex;
