@@ -42,7 +42,7 @@
         text-transform: capitalize;
         position: sticky;
         top: 0;
-        z-index: 999999999;
+        z-index: 1000;
 
 
         .container-md {

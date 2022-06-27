@@ -37,7 +37,7 @@
         },
         data() {
             return {
-                image_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/assets/images/',
+                image_url: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/assets/images/',
                 api_url: 'https://pokeapi.co/api/v2/pokemon/',
             }
         },

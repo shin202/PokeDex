@@ -243,9 +243,9 @@
                 method: 'level-up',
                 move_data: [],
                 move_effect: [],
-                move_data_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/dataset/moves.json',
-                effect_data_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/dataset/move_effect.json',
-                damage_category_icon: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/assets/damage-category/',
+                move_data_url: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/dataset/moves.json',
+                effect_data_url: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/dataset/move_effect.json',
+                damage_category_icon: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/assets/damage-category/',
                 modal_content: {},
                 is_show: false,
             }

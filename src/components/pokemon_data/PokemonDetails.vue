@@ -148,8 +148,8 @@
                 secondary_color: '',
 
                 pokemon_url: `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}/`,
-                image_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/assets/images/',
-                icon_url: 'https://raw.githubusercontent.com/Shin241412/Pokemon-Dataset/main/assets/icons/',
+                image_url: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/assets/images/',
+                icon_url: 'https://raw.githubusercontent.com/shin202/Pokemon-Dataset/main/assets/icons/',
 
                 is_loading: true,
                 mousemove_top: null,
